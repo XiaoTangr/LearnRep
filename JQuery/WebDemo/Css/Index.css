@@ -1,0 +1,199 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+    /* border: red solid .1px; */
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    fill:var(--Font-Color)!important;
+    color:var(--Font-Color);
+    
+}
+
+.Light{
+    --Font-Color: #292929;
+    --Font-Color-High: #f1f1f1;
+    --Menu-Base-BG-Color: #8dd3ff;
+    --Menu-Item-Color: #4ab9ff;
+    --Menu-Item-Shadow-Color: #002e4b;
+    --Menu-Item-Hover-Color: #0076c0;
+    --Footer-Base-BG-Color:#2c3946;
+
+}
+.Dark{
+    --Font-Color: #f1f1f1;
+    --Font-Color-High: #292929;
+    --Menu-Base-BG-Color: #486d84;
+    --Menu-Item-Color: #2f4652;
+    --Menu-Item-Shadow-Color: #002e4b;
+    --Menu-Item-Hover-Color: #00b3ff;
+    --Footer-Base-BG-Color:#2c3946;
+
+}
+.el-icon{
+    padding: 0em;
+    width: 1em;
+    height: 1em;
+    overflow: hidden;
+}
+#App{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.Menu-Box{
+    background-color: var(--Menu-Base-BG-Color);
+    display: flex;
+    width: 16em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    /* width: 10%; */
+    height: 100%;
+    
+}
+.Menu-Item{
+    width: 16em;
+    background:var(--Menu-Item-Color);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.2s linear;
+}
+.Menu-Item-Title-Box{
+    width: 100%;
+    padding: .5em;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.Menu-SubItem-Box{
+    width: 100%;
+    display: none;
+}
+.Menu-SubItem{
+    width: 100%;
+    padding: .5em 1em;
+    display: flex;
+    align-items: center;
+}
+
+.Menu-Item-Title-Box,.Menu-SubItem{
+    cursor: pointer;
+
+}
+.Menu-Item-Title-Box:hover,.Menu-SubItem:hover{
+    background: var(--Menu-Item-Hover-Color);
+    color: var(--Font-Color-High);
+}
+.Menu-Icon{
+    margin: 0 0.5em;
+    transform:rotate(-90deg);
+}
+.App-Box{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width:calc( 100% - 16em );
+    height: 100%;
+}
+.Main-Box{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background: var(--Font-Color-High);
+}
+
+.Footer-Box{
+    background: var(--Footer-Base-BG-Color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 8em;
+}
+
+
+
+
+.ImgPalyer-OutBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 640px;
+    /* background-image: url(../Assets/Imgs/001.jpg); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: all .5s;
+}
+
+.ImgPalyer-BlurBox {
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(1em);
+    display: flex;
+    align-items:  center;
+    justify-content: center;
+}
+
+.ImgPalyer-Box {
+    overflow: hidden;
+    width: 900px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .2em;
+    box-shadow: var(--Menu-Item-Shadow-Color) 0.1em 0.1em 1em;
+}
+
+.ImgPalyer-ImgBox {
+    width: 900px;
+    height: 600px;
+    display: flex;
+    border-radius: .1em;
+    position: relative;
+    transition: all .5s;
+
+}
+.ImgPalyer-Item {
+    width: 900px !important;
+    /* height: 600px !important; */
+    object-fit: contain;
+}
+
+.ImgPalyer-PointBox {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ImgPalyer-Point {
+    height: 1em;
+    width: 1em;
+    margin: .5em;
+    border-radius: .5em;
+    background: var(--Menu-Item-Color);
+    transition: all .5s ease-in-out;
+    box-shadow: var(--Menu-Item-Shadow-Color) 0.1em 0.1em 1em;
+}
+.ImgPalyer-Point:hover{
+    background-color: var(--Menu-Item-Hover-Color);
+}
+.ImgPalyer-Point-Active {
+    background-color: var(--Menu-Item-Hover-Color);
+    width: 4em;
+}
+.ImgPalyer-Point-NoTr{
+    transition:none !important;
+}
