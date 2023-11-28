@@ -21,7 +21,6 @@ $(document).ready(function () {
         RatedLevel = $(this).index() + 1;
         console.log(RatedLevel);
         return RatedLevel;
-
     })
     $(".Rating_Box").on("mouseleave", function () {
         if (Rated == false) {
@@ -41,7 +40,7 @@ $(document).ready(function () {
             let StarDom = (RatedLevel === 0) ? "未评级 " : "&#9734;".repeat(RatedLevel) + " ";
             let SubmitDom =
                 `<div>   <span class="RatedStars"> ` + StarDom + `</span><span>` + MsgText + `</span></div>`
-            if ( $(".NoDis").length <= 0) {
+            if ($(".NoDis").length <= 0) {
                 $("#Msg_Box").append(SubmitDom);
             } else {
                 $("#Msg_Box").html(SubmitDom);
@@ -53,5 +52,19 @@ $(document).ready(function () {
         Rated = false;
         $(".star").removeClass("star-Active");
         $("#Text_Input").val("");
+    })
+    $(".AddMsg").on("click", function () {
+        switch ($(this).attr("id")) {
+            case "Msg1":
+                $("#Text_Input").val("为中国航天事业点赞！");
+                RatedLevel = 5;
+                break
+            case "Msg2":
+                $("#Text_Input").val("努力学习，为航天事业尽力！");
+                RatedLevel = 5;
+                break
+            default:
+                break
+        }
     })
 });
