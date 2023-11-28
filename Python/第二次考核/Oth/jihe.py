@@ -1,0 +1,115 @@
+#列表的特征和使用方法（增删改查）
+#列表是一组任意的有序的数据集合，列表中的数据类型可以不相同，列表支持增删改查操作，具有灵活性
+#用赋值’=‘创建sname列表
+sname= ['zs','ls','ww']
+print("sname:",sname)
+#用list函数创建x列表
+x=list(range(10))
+print("x:",x)
+#1，用.append函数在文件末尾添加元素
+sname.append('ml')
+print("在末尾添加后的sname:",sname)
+#用.insert函数在列表指定位置后面添加元素
+sname.insert(1,'zl')
+print("在指定位置添加后的sname:",sname)
+#用.extend函数把一个列表添加到另一个列表
+aname=['zs','ls']
+gname=['ww','ml']
+aname.extend(gname)
+print("把gname添加到aname后:",aname)
+#2，用.remove函数根据元素的值进行删除
+aname.remove('ww')
+print("删除后的aname:",aname)
+#用del函数根据索引值进行删除并且输出，此函数删除列表元素时不返回该元素的值，直接删除
+del aname[1]
+print("删除后的aname:",aname)
+#用.pop函数根据索引值进行删除并且输出,此函数删除列表元素时将返回该元素的值
+d=aname.pop(1)
+print("删除的元素是：",d)
+print("删除后的aname:",aname)
+#3，根据想要修改的元素的索引值对元素进行重新赋值
+abc=['zs','ls','ww','ml']
+abc[1]='zl'
+print(abc)
+#4，列表的输出查询
+a=['zs','ls','ww','ml']
+print(a[1])
+#列表的切片查询
+print(a[0:3])
+#列表的判断查询
+s=["zs","ls","ml"]
+b=["ml","ww"]
+for i in b:
+    if i in s:
+        print(i+'在列表中')
+    else:
+        print(i+'不在列表中')
+#5，列表的遍历
+s=['张三','李四','王五','赵六']
+for name in s:
+    print(name)
+#元组的特征和使用方法（增删改查）
+#元组与列表类似，不同之处在于元组的元素不能修改
+#创建一个元组并且输出
+sname= ('zs','ls','ww')
+print("sname:",sname)
+#1,元组不能修改，只能重新赋值
+sname=('zs','ls','ww','ml')
+print("重新给sname赋值:",sname)
+#2,使用索引的方式对指定元素进行查询
+print("查询sname的第2个元素：",sname[1])
+#3,列表互转元组，tuple()冻结一个列表，list()解冻元组
+列表=['苹果','香蕉','橘子']
+print(type(列表),列表)
+l_tuple=tuple(列表)
+print(type(l_tuple),l_tuple)
+元组=('百香果','火龙果','哈密瓜')
+print(type(元组),元组)
+t_list=list(元组)
+print(type(t_list),t_list)
+#4,元组的遍历
+fruitname=('苹果','香蕉','橘子','火龙果','百香果','哈密瓜')
+print('欢迎光临，我们有：')
+for i in fruitname:
+    print(i,end='')#end=' '表示不换行输出
+print('请随便选购！')
+'''
+元组和列表的区别：
+列表可以使用python内置函数进行增删改查，元组不能修改，只能重新赋值
+元组的处理速度快于列表
+元组和列表都支持切片操作，但是元组只支持切片访问，不能修改
+元组可以作为字典的键值，列表不可以
+'''
+#字典的特征和使用方法（增删改查）
+#字典用于存放具有映射关系的数据，是无序可变的序列，可增删改查，格式为{key:value}，key值必须唯一且不可变
+#用直接赋值法
+fruit={'苹果':'红色','香蕉':'黄色'}
+print("fruit：",fruit)
+#用dict函数赋值
+fruit2=dict(香蕉='黄色',苹果='红色')
+print("fruit2:",fruit2)
+#用zip()函数赋值
+fruit=['苹果','香蕉',]
+color=['红色','黄色']
+fruit1=dict(zip(fruit,color))
+print("fruit1:",fruit1)
+#1,key值对应的value进行增加元素
+fruitprice={'苹果':'10','香蕉':'20','橘子':'30'}
+fruitprice['火龙果']='15'
+print("增加后的fruitprice:",fruitprice)
+#2,用del删除字典的元素
+del fruitprice['橘子']
+print("删除后的fruitprice:",fruitprice)
+#用clear()函数删除整个字典
+fruitprice.clear()
+print("清空后的fruitprice:",fruitprice)
+#3,用key值查询
+cj={'张三':60,'李四':70,'王五':80}
+print("王五的成绩：",cj['王五'])
+#4,key值对应的value进行修改元素
+cj['张三']=76
+print("修改后的张三成绩：",cj['张三'])
+#5,遍历字典
+cj={'张三':60,'李四':70,'王五':80,'赵六':90}
+for i,x in cj.items():
+    print('key:',i,'values:',x)
