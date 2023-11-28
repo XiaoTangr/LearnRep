@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.12.4.js"></script>
+    <style>
+     #x{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%,-50%); 
+        height: 800px;
+        width: 600px;
+        background-color: rgb(253, 252, 247);
+        border: solid rgb(80, 13, 236) 2px;
+        }
+    h1 {
+         font-size: 32px;
+         font-weight: bold;
+         color: #4c08ea;
+         text-align: center;
+     }
+      /* 隐藏图片 */
+    #myImage {
+      display: none;
+    }
+    
+    .rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.star {
+  display: inline-block;
+  font-size: 24px;
+  color: gray;
+  cursor: pointer;
+}
+
+.star:hover,
+.star:hover ~ .star {
+  color: gold;
+}
+
+.star.filled {
+  color: gold;
+}
+#myText{
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 500px;
+  height: 200px;
+
+}
+.rating{
+  margin: 20px;
+
+}
+#PL{
+  margin: 20px;
+  width: 500px;
+  height: 50px;
+}
+    </style> 
+</head>
+
+<body>
+  <div id="x">
+    <h1>中国航天精神</h1>
+    <p style="font-weight: bold; color: blue;font-family: '仿宋';">中国航天史：</p>
+    <p style="text-indent: 4ch;">第一个想到利用火箭飞天的人——明朝的万户</p>
+    <p style="text-indent: 4ch;">东方红一号——中国第一颗人造卫星</p>
+    <p style="text-indent: 4ch;">1970年4月24日,中国第一颗人造地球卫星“东方红-1”发射成功。</p>
+    <p style="text-indent: 4ch;">载人航天,2003 年10 月15 日，中国神舟五号载人飞船升空。</p>
+    <p style="text-indent: 4ch;">深空探测-嫦娥奔月,2007年10月24日,嫦娥一号成功奔月</p>
+    <p style="text-indent: 4ch;">这种境遇下,我们选择:</p>
+    <!-- 初始时隐藏的按钮 -->
+<button id="showImageButton">点击查看/隐藏图片</button>
+<img id="myImage" src="2.jpg" alt="Your Image" width="200" height="100">
+    <button id="yao">决定了！我们也要</button>
+    <button id="ping">我要评论</button>
+<div id="pingdiv"> 
+  <input type="text" id="myText" placeholder="请输入内容...">
+  <div class="rating">
+    <span class="star" id="star5">&#9734;</span>
+    <span class="star" id="star4">&#9734;</span>
+    <span class="star" id="star3">&#9734;</span>
+    <span class="star" id="star2">&#9734;</span>
+    <span class="star" id="star1">&#9734;</span>
+  </div>
+
+<button id="PL">评论</button>
+  
+</div>
+
+</div>
+<script>
+  // 获取按钮和图片元素
+  var showImageButton = document.getElementById('showImageButton');
+  var myImage = document.getElementById('myImage');
+  var pingButton = document.getElementById('ping');
+  var pinglayout = document.getElementById('pingdiv');
+  // 添加点击事件监听器
+  showImageButton.addEventListener('click', function() {
+    // 切换图片的显示状态
+    if (myImage.style.display === 'none') {
+      // 显示图片
+      myImage.style.display = 'block';
+    } else {
+      // 隐藏图片
+      myImage.style.display = 'none';
+    }
+
+  });
+    // 添加点击事件监听器
+    pingButton.addEventListener('click', function() {
+    // 切换图片的显示状态
+    if (pinglayout.style.display === 'none') {
+      // 显示图片
+      pinglayout.style.display = 'block';
+    } else {
+      // 隐藏图片
+      pinglayout.style.display = 'none';
+    }
+
+  });
+// 获取所有五角星元素
+const stars = document.querySelectorAll('.star');
+
+// 监听五角星的点击事件
+stars.forEach(star => star.addEventListener('click', rate));
+
+// 评分函数
+function rate(event) {
+  const clickedStar = event.target;
+  const clickedStarId = clickedStar.id;
+
+  alert(clickedStarId);
+  // 根据被点击五角星的ID，将其及之前的五角星标记为实心
+  stars.forEach(star => {
+    if (star.id <= clickedStarId) {
+      
+      star.classList.add('filled');
+    } else {
+      star.classList.remove('filled');
+    }
+  });
+  
+  // 在这里可以将评分结果发送到服务器或执行其他操作
+}
+
+
+
+
+</script>
+</body>
+</html>
