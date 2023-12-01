@@ -1,0 +1,184 @@
+* {
+    padding: 0;
+    margin: 0;
+    /* border: red 1px solid; */
+    box-sizing: border-box;
+    color: var(--FONT);
+}
+
+.Light {
+    --FONT: rgb(10, 10, 10);
+    --EL-NOL: rgba(122, 182, 255, 0.5);
+    --EL-NOL_H: rgba(54, 145, 255, 0.2);
+    --EL-ACT: rgba(0, 109, 225, 0.5);
+    --EL-BASE: rgba(167, 167, 167, 0.85);
+    --EL-BOX-BG: rgba(255, 255, 255, 0.7);
+    --BG-COVER: none;
+}
+.Dark{
+    --FONT: rgb(245, 245, 245);
+    --EL-NOL:  rgba(0, 21, 46, 0.5);
+    --EL-NOL_H:rgba(0, 94, 195, 0.2);
+    --EL-ACT: rgba(0, 94, 195, 0.5);
+    --EL-BASE: rgba(31, 31, 31, 0.85);
+    --EL-BOX-BG: rgba(45, 45, 45, 0.7);
+    --BG-COVER:  rgba(0, 0, 0, 0.7);
+}
+
+body,
+html {
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    font-family: "Microsoft YaHei", "微软雅黑", "Heiti SC", "黑体", "Noto Sans SC", sans-serif;
+}
+
+.BG {
+    position: absolute;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+.bg-info{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    padding: 1em;
+    background-color: var(--EL-BOX-BG);
+    backdrop-filter: blur(1em);
+    justify-content: center;
+    align-items: center;
+}
+.Main {
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:var(--BG-COVER);
+}
+
+.main {
+    width: 60%;
+    max-height: 90%;
+    background: var(--EL-BOX-BG);
+    overflow: hidden;
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: .2em .2em 1.2em 0em var(--EL-NOL);
+    /* backdrop-filter: blur(2px); */
+}
+
+.MidBox {
+    overflow: hidden;
+    overflow-y: auto;
+    height: 20em;
+}
+
+.TopBox,
+.MidBox,
+.FunBox {
+    margin: .3em;
+}
+.text_dis_item {
+    cursor: pointer;
+    padding:  1em .5em;
+    border-radius: .3em;
+    margin:  .2em .2em  0em 0em;
+    transition: all .3s linear;
+}
+.TextBox {
+    width: 100%;
+    height: 100%;
+
+}
+
+.user_text_input {
+    overflow: hidden;
+    overflow-y: auto;
+    resize: vertical;
+    width: 100%;
+    min-height: 2em;
+    max-height: 5em;
+    font-size: 1.5em;
+}
+
+.user_name_input {
+    width: 100%;
+    resize: none;
+    flex: 1;
+}
+
+.user_text_input,
+.user_name_input {
+    border: 1px solid var(--EL-ACT);
+    padding: .3em;
+    border-radius: .3em;
+    outline: none;
+    background: none;
+    backdrop-filter: blur(1em);
+}
+
+
+.UserNameIptBox {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+}
+
+.BtnBox {
+    display: flex;
+}
+
+.line {
+    height: 1px;
+    background: var(--EL-BASE);
+    border: none;
+    padding-bottom: 2px;
+}
+
+.BTN {
+    padding: .7em 1.5em;
+    background: var(--EL-NOL);
+    border-radius: .2em;
+    margin: 0em .3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .1s linear all;
+}
+
+.BTN:hover {
+    background: var(--EL-ACT);
+    backdrop-filter:blur(1em);
+}
+
+/* 设置滚动条宽度 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* 设置滚动条颜色 */
+::-webkit-scrollbar-track {
+    background-color: var(--EL-BASE);
+    border-radius: 10px;
+}
+
+/* 设置滚动条滑块 */
+::-webkit-scrollbar-thumb {
+    background-color: var(--EL-NOL);
+    border-radius: 10px;
+}
+
+/* 设置滚动条滑块在悬停状态下的颜色 */
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--EL-ACT);
+}

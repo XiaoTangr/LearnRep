@@ -1,0 +1,116 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    /* border: red solid 1px; */
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    padding: .5em 1em;
+    cursor: pointer;
+}
+
+.Main {
+    padding: 2em;
+    background: rgb(148, 168, 196);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: .5em;
+    max-width: 40%;
+}
+
+.Main h1 {
+    font-weight: bold;
+    color: rgb(0, 60, 255);
+    font-family: '仿宋';
+}
+.Text_Box > p:first-child {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: blue;
+    font-family: '仿宋';
+    text-indent: 0 !important;
+}
+.Text_Box > p{
+    padding: .5em;
+    text-indent: 2em;
+}
+.Img_Dispaly_Box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#myImage {
+    display: none;
+    width: auto;
+    height: 40vh;
+}
+
+.Chose_Box{
+    margin: .5em;
+}
+#ShowImageBtn{
+    margin: .5em;
+}
+
+.Discuss_Box{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Submit_Box{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+#Text_Input{
+    flex: 1;
+    min-height: 4em;
+    max-height: 8em;
+}
+#Submit_Btn{
+    width: 8em;
+    height: 4em;
+    margin: .5em;
+}
+
+
+.star{
+    cursor: pointer;
+    color: rgb(49, 49, 49);
+    fill: none;
+    font-size: 1.5em;
+}
+.star-Active,.RatedStars{
+    fill: rgb(255, 213, 0);
+    color: rgb(255, 213, 0);
+}
+.Msg_Dispaly_Box{
+    width: 100%;
+}
+.Msg_Box{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}

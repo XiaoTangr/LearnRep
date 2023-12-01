@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/JQuery371.js"></script>
+    <script src="./js/index.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="Main">
+        <h1>中国航天精神</h1>
+        <div class="Text_Box">
+            <p>中国航天史：</p>
+            <p>第一个想到利用火箭飞天的人——明朝的万户</p>
+            <p>东方红一号——中国第一颗人造卫星</p>
+            <p>1970年4月24日,中国第一颗人造地球卫星“东方红-1”发射成功。</p>
+            <p>载人航天,2003 年10 月15 日，中国神舟五号载人飞船升空。</p>
+            <p>深空探测-嫦娥奔月,2007年10月24日,嫦娥一号成功奔月</p>
+            <p>这种境遇下,我们选择:</p>
+        </div>
+
+        <div class="Img_Dispaly_Box">
+            <button id="ShowImageBtn">点击查看/隐藏图片</button>
+            <img id="myImage" src="2.jpg" alt="Your Image" width="200" height="100">
+        </div>
+        <div class="Chose_Box">
+            <button class="AddMsg" id="Msg1">为中国航天事业点赞！</button>
+            <button class="AddMsg" id="Msg2">努力学习，为航天事业尽力！</button>
+        </div>
+        <div class="Discuss_Box">
+            <div class="Msg_Dispaly_Box">
+                <center>
+                    <h3>评论区</h3>
+                </center>
+                <div id="Msg_Box">
+                    <div class="NoDis">暂无评论</div>
+                </div>
+            </div>
+            <div class="Rating_Box">
+                <span class="star" id="star0">&#9734;</span>
+                <span class="star" id="star1">&#9734;</span>
+                <span class="star" id="star2">&#9734;</span>
+                <span class="star" id="star3">&#9734;</span>
+                <span class="star" id="star4">&#9734;</span>
+            </div>
+            <div class="Submit_Box">
+                <textarea type="text" id="Text_Input" placeholder="请输入内容..."></textarea>
+                <button id="Submit_Btn">提交评论</button>
+            </div>
+        </div>
+</body>
+
+</html>

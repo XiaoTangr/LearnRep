@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一颗橘子唐的留言板</title>
+    <script src="./JS/JQuery37.js"></script>
+    <script src="./JS/index.js"></script>
+    <link rel="stylesheet" href="./CSS/index.css">
+</head>
+
+<body class="Dark">
+    <div class="BG">
+        <div class="bg-info" id="bg-info"></div>
+    </div>
+    <div class="Main">
+        <div class="main">
+            <Div class="TopBox">
+                <h2>
+                    <center>欢迎来到一颗橘子唐的留言板</center>
+                </h2>
+            </Div>
+            <div class="MidBox">
+                <div class="text_display_outbox" id="text_display_outbox">
+                    <div class="text_display_inbox" id="text_display_inbox">
+                        <div class="text_dis_item" id="item0">
+                            <center>没有数据,点击添加一条吧</center>
+                        </div>
+                        <!--留言插入位置-->
+                    </div>
+                </div>
+            </div>
+            <div class="FunBox">
+                <div class="FunBox_in">
+                    <div class="TextBox">
+                        <textarea placeholder="输入留言" class="user_text_input" name="user_text" id="user_text_input"></textarea>
+                    </div>
+                    <div class="UserNameIptBox">
+                        <input type="text" placeholder="输入用户名"  class="user_name_input" name="user_name_input" id="user_name_input" />
+                        <div class="BtnBox">
+                            <div class="BTN" id="Btn_pul">
+                                发布
+                            </div>
+                            <div class="BTN" id="Btn_del">
+                                撤回
+                            </div>
+                            <div class="BTN" id="Btn_list">
+                                正序
+                            </div>
+                            <div class="BTN" id="Btn_mod">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</body>
+    <script>
+        for (var i = 0; i < 10; i++){
+            console.log("Auther is Xiaotangr@3083649887!   x" + (i+1));
+        }
+    </script>
+</html>
