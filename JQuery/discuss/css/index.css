@@ -98,7 +98,7 @@ button {
     cursor: pointer;
     color: rgb(49, 49, 49);
     fill: none;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 .star-Active,.RatedStars{
     fill: rgb(255, 213, 0);
@@ -112,5 +112,16 @@ button {
     display:flex;
     flex-direction: column;
     justify-content: start;
-    align-items: start;
+    align-items: center;
+}
+#Msg_Box div{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+#Msg_Box *{
+    transition: all 0.2s ease;
+}
+#Msg_Box *:hover{
+    font-size: 1.5em;
 }
