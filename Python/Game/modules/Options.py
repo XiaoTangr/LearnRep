@@ -37,3 +37,20 @@ class Options():
         self.alien_drop_speed =100 
         # run direction to right is 1 ,left is -1
         self.alien_direction = 1
+
+
+        self.speedup_scale = 1.1
+        self.initaliize_dynamic_speed = 1.0
+
+
+    def initialize_dynamic_settings(self):
+        self.alien_speed_factor = 1.5
+        self.bullet_speed_factor = 3
+        self.ship_speed_factor = 1
+        self.alien_direction = 1
+        
+    def increase_speed(self):
+        self.alien_speed_factor *= self.speedup_scale
+        self.bullet_speed_factor *= self.speedup_scale
+        self.ship_speed_factor *= self.speedup_scale
+    

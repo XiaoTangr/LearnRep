@@ -14,9 +14,11 @@ from modules.Options import Options
 from modules.objs.ship import Ship
 from modules.objs.alien import Alien
 from modules.objs.stats import GameStats
+from modules.objs.scoreboard import ScoreBoard
 from pygame.sprite import Group
 from modules.objs.stats import GameStats
 from modules.objs.Button import Button
+
 
 """
     the function of start game
@@ -30,6 +32,7 @@ def startGame():
     opts = Options()
     screen = pygame.display.set_mode((opts.screen_width, opts.screen_height))
     stats = GameStats(opts)
+    sb = ScoreBoard(opts, screen, stats)
     ship = Ship(opts, screen)
     bullets = Group()
     aliens = Group()
@@ -43,12 +46,12 @@ def startGame():
 
     # the loop for keeping game run
     while 1:
-        funs.check_events(opts, screen,stats,play_Button, ship, bullets)
+        funs.check_events(opts, screen,stats,play_Button,ship, aliens,bullets)
         if stats.game_active:
             funs.update_ship(ship)
             funs.update_aliens(opts,stats,screen,ship,aliens,bullets)
             funs.update_bullets(opts,screen,ship,aliens, bullets)
-        funs.update_screen(opts,screen,stats,ship,aliens,bullets,play_Button)
+        funs.update_screen(opts,screen,stats,sb,ship,aliens,bullets,play_Button)
 
 
 
