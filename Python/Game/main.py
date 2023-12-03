@@ -46,11 +46,11 @@ def startGame():
 
     # the loop for keeping game run
     while 1:
-        funs.check_events(opts, screen,stats,play_Button,ship, aliens,bullets)
+        funs.check_events(opts, screen,stats,sb,play_Button,ship, aliens,bullets)
         if stats.game_active:
             funs.update_ship(ship)
             funs.update_aliens(opts,stats,screen,ship,aliens,bullets)
-            funs.update_bullets(opts,screen,ship,aliens, bullets)
+            funs.update_bullets(opts,screen,stats,sb,ship,aliens, bullets)
         funs.update_screen(opts,screen,stats,sb,ship,aliens,bullets,play_Button)
 
 

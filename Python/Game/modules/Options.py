@@ -22,11 +22,11 @@ class Options():
         # the options of bullet
         self.bullet_speed_factor = 1
         self.bullet_width = 3
-        self.bullet_height = 15
+        self.bullet_height = 6
         self.bullet_color = 60,60,60
         self.bullets_allowed = -1
         # bullets keep display after shoted aliens if = true
-        self.bullets_keep= True
+        self.bullets_keep = True
 
 
         # the options of alien
@@ -34,7 +34,7 @@ class Options():
         self.alien_space_y_multiple = 1.2
         self.alien_speed_factor = 1
         # drop speed of alien
-        self.alien_drop_speed =100 
+        self.alien_drop_speed =10
         # run direction to right is 1 ,left is -1
         self.alien_direction = 1
 
@@ -42,15 +42,18 @@ class Options():
         self.speedup_scale = 1.1
         self.initaliize_dynamic_speed = 1.0
 
+        self.score_scale = 1.5
 
     def initialize_dynamic_settings(self):
         self.alien_speed_factor = 1.5
         self.bullet_speed_factor = 3
         self.ship_speed_factor = 1
         self.alien_direction = 1
+        self.alien_points=50
         
     def increase_speed(self):
         self.alien_speed_factor *= self.speedup_scale
         self.bullet_speed_factor *= self.speedup_scale
         self.ship_speed_factor *= self.speedup_scale
-    
+        self.alien_points = int(self.alien_points * self.score_scale)
+        print(self.alien_points)
