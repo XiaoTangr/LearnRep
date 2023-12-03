@@ -8,7 +8,7 @@ class Options():
     def __init__(self):
         
         # evn param,enmu of "prod" or "dev"
-        self.evn = "dev"
+        self.evn = "prod"
 
         # the options of Windows
         self.screen_width=1024
@@ -56,4 +56,5 @@ class Options():
         self.bullet_speed_factor *= self.speedup_scale
         self.ship_speed_factor *= self.speedup_scale
         self.alien_points = int(self.alien_points * self.score_scale)
-        print(self.alien_points)
+        if self.evn == "dev":
+            print(self.alien_points)

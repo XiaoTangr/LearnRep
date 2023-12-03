@@ -112,11 +112,11 @@ def check_bullet_alien_collisions(opts,screen,stats,sb,ship,aliens,bullets):
 
 
 
-def check_aliens_bottom(opts,stats,screen,ship,aliens,bullets):
+def check_aliens_bottom(opts,stats,screen,sb,ship,aliens,bullets):
     screen_rect = screen.get_rect()
     for alien in aliens.sprites():
         if alien.rect.bottom >= screen_rect.bottom:
-            ship_hit(opts,stats,screen,ship,aliens,bullets)
+            ship_hit(opts,stats,screen,sb,ship,aliens,bullets)
             break
 
 
@@ -173,9 +173,10 @@ def create_fleet(opts,screen,ship,aliens):
 """
 相应飞船与外星人撞击事件 
 """
-def ship_hit(opts,stats,screen,ship,aliens,bullets):
+def ship_hit(opts,stats,screen,sb,ship,aliens,bullets):
     if stats.ships_left > 0:
         stats.ships_left -= 1
+        sb.prep_ships()
         aliens.empty()
         bullets.empty()
         create_fleet(opts,screen,ship,aliens)
@@ -190,12 +191,12 @@ def ship_hit(opts,stats,screen,ship,aliens,bullets):
 """
 # update aliens
 """
-def update_aliens(opts,stats,screen,ship,aliens,bullets):
+def update_aliens(opts,stats,screen,sb,ship,aliens,bullets):
     check_fleet_edges(opts,aliens)
     aliens.update()
     if pygame.sprite.spritecollideany(ship,aliens):
-        ship_hit(opts,stats,screen,ship,aliens,bullets)
-    check_aliens_bottom(opts,stats,screen,ship,aliens,bullets)
+        ship_hit(opts,stats,screen,sb,ship,aliens,bullets)
+    check_aliens_bottom(opts,stats,screen,sb,ship,aliens,bullets)
 
 def check_fleet_edges(opts,aliens):
     for alien in aliens.sprites():
