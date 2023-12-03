@@ -1,3 +1,11 @@
+#################################################
+# File Name:scoreboard.py
+# Desc:The class of score board
+# auther: 一颗橘子唐
+#################################################
+
+
+
 import pygame.font
 from pygame.sprite import Group
 from modules.objs.ship import Ship

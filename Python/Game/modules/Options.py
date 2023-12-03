@@ -1,7 +1,7 @@
 #################################################
 # File Name:Options.py
 # Desc:The global options of game
-# auther: TJRdのTanga
+# auther: 一颗橘子唐
 #################################################
 
 class Options():

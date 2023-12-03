@@ -1,10 +1,10 @@
 # ==============================================
-# file:main.py
+# file: main.py
 # version: 1.0
 # desc: a game of ship pvp powered by Python
-# auther: TJRのTanga
+# auther: 一颗橘子唐
 # create date: 9/19/2023
-# update date: 9/21/2023
+# update date: 12/03/2023
 # ==============================================
 import sys
 sys.path.append('./modules')

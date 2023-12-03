@@ -1,7 +1,7 @@
 # ==============================================
 # file:ship.py
 # desc: the class of ship
-# auther: TJRのTanga
+# auther: 一颗橘子唐
 # ==============================================
 import pygame
 from pygame.sprite import Sprite

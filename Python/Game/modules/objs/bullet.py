@@ -1,7 +1,7 @@
 # ==============================================
 # file:bullet.pu
 # desc: the class of bullet
-# auther: TJRのTanga
+# auther: 一颗橘子唐
 # ==============================================
 import pygame
 from pygame.sprite import  Sprite

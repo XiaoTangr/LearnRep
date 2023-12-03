@@ -1,3 +1,11 @@
+#################################################
+# File Name:stats.py
+# Desc:The class of stats
+# auther: 一颗橘子唐
+#################################################
+
+
+
 class GameStats():
     def __init__(self,opts):
         self.opts = opts

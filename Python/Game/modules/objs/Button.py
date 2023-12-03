@@ -1,3 +1,10 @@
+# ==============================================
+# file:Button.pu
+# desc: the class of Button
+# auther: 一颗橘子唐
+# ==============================================
+
+
 import pygame.font
 
 class Button:

@@ -1,7 +1,7 @@
 # ==============================================
 # file:funcs.py
 # desc: the functions define
-# auther: TJRのTanga
+# auther: 一颗橘子唐
 # ==============================================
 import sys
 from time import sleep
