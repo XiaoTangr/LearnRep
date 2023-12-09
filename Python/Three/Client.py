@@ -6,28 +6,39 @@ Port = 5000
 MsgModule = False
 info = "Client: Please Enter Your Order : "
 
+sureinfo = '''
+======================================================
+=   Are You Sure to Close Server?                    =
+=   This will disconnect and cannot be recovered!    =
+=----------------------------------------------------=
+=      'Y' to Sure      |      'N' to cancel.        =
+======================================================
+'''
+
+startInfo = ''' 
+=====================================================================
+=    Order List :                                                   =
+=        0 : Close the connection                                   =
+=        1 : Get Time From Server                                   =
+=        2 : Specific message (Type "Eixt" To exit this module)     =
+=        x : Close Server!                                          =
+=====================================================================
+'''
+
+
 def RecvP(Client):
     print(Client.recv(1024).decode())
 
 
-if __name__ == '__main__':
-
+def StartClient():
     Client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    print("Connect To {H} : {P} ...".format(H=Host, P=Port))
+    print("Log: Connect To {H} : {P} ...".format(H=Host, P=Port))
     Client.connect((Host, Port))
-    print("Connect Successful!")
-    print(
-        ''' 
-    =========================================
-    Order List :
-        0 : Close the connection
-        1 : Get Time From Server
-        2 : Specific message (Type "Eixt" To exit this module)
-    =========================================
-''')
+    print("Log: Connect Successful!")
+    print(startInfo)
     while True:
         Input_Data = input(info)
-        if Input_Data :
+        if Input_Data:
             if MsgModule == True:
                 if Input_Data == "Exit":
                     MsgModule = False
@@ -47,11 +58,32 @@ if __name__ == '__main__':
                     Client.sendall("MsgM".encode())
                     RecvP(Client)
                 elif Input_Data == "0":
+                    Client.sendall("0".encode())
+                    RecvP(Client)
+                    print("Info: Connect closed!")
+                    print("Client: Exitting...")
                     Client.close()
-                    print("Log: Close Connection!")
                     exit()
+                elif Input_Data == "x":
+                    print(sureinfo)
+                    sure = input("Y/N")
+                    if sure == "Y":
+                        Client.sendall("x".encode())
+                        RecvP(Client)
+                        print("Info: Connect closed!")
+                        print("Client: Exitting...")
+                        Client.close()
+                        exit()
+                    elif sure == "N":
+                        print("Log: Operation Cancel!")
+                    else:
+                        print("Error: Error Word!(Operation Cancel!)")
                 else:
                     Client.sendall(Input_Data.encode())
                     RecvP(Client)
         else:
             print("Error: Not Input anything!")
+
+
+if __name__ == '__main__':
+    StartClient()
