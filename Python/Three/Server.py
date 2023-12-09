@@ -2,10 +2,7 @@ import socket
 import time
 
 
-Host = '127.0.0.1'
-Port = 5000
-MsgModule = False
-SendMsg = "Server: "
+
 
 
 def GatTime():
@@ -18,13 +15,14 @@ def Sender(msg):
 
 
 def StartServer():
+    Host = '127.0.0.1'
+    Port = 5000
+    MsgModule = False
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((Host, Port))
     server.listen(5)
     print("\nLog: Server started at {Host}:{Port}".format(
         Host=Host, Port=Port))
-
-    SendMsg = "Server: "
     print("Log: Waitting Connect...")
     while True:
         client_socket, client_address = server.accept()

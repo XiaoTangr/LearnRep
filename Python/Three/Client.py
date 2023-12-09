@@ -1,12 +1,22 @@
 import socket
 
-Host = 'localhost'
-Port = 5000
 
-MsgModule = False
-info = "Client: Please Enter Your Order : "
 
-sureinfo = '''
+
+def RecvP(Client):
+    print(Client.recv(1024).decode())
+
+
+def StartClient():
+    
+
+    Host = 'localhost'
+    Port = 5000
+
+    MsgModule = False
+
+
+    sureinfo = '''
 ======================================================
 =   Are You Sure to Close Server?                    =
 =   This will disconnect and cannot be recovered!    =
@@ -15,7 +25,7 @@ sureinfo = '''
 ======================================================
 '''
 
-startInfo = ''' 
+    startInfo = ''' 
 =====================================================================
 =    Order List :                                                   =
 =        0 : Close the connection                                   =
@@ -26,12 +36,13 @@ startInfo = '''
 '''
 
 
-def RecvP(Client):
-    print(Client.recv(1024).decode())
+
+    info = "Client: Please Enter Your Order : "
 
 
-def StartClient():
     Client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    
     print("Log: Connect To {H} : {P} ...".format(H=Host, P=Port))
     Client.connect((Host, Port))
     print("Log: Connect Successful!")
@@ -66,7 +77,7 @@ def StartClient():
                     exit()
                 elif Input_Data == "x":
                     print(sureinfo)
-                    sure = input("Y/N")
+                    sure = input("Y/N: ")
                     if sure == "Y":
                         Client.sendall("x".encode())
                         RecvP(Client)
