@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns=" http://www.w3.org/1999/xhtml" xml:lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #eeeeee;
+        }
+
+        .waterfall {
+            width: 790px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .grid {
+            width: 250px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .6);
+            background: white;
+            position: absolute;
+        }
+
+        .grid img {
+            width: 250px;
+        }
+
+        .grid h3 {
+            padding: 10px;
+        }
+
+        .grid .g_detail {
+            padding: 10px;
+        }
+
+        .grid .g_author {
+            padding: 10px;
+            text-align: right;
+        }
+
+        .tip {
+            background-color: #2a8;
+            width: 60%;
+            margin: 0 auto;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="waterfall" id="waterfall">
+        </div>
+        <div class="tip" id="tip">
+            正在加载更多，请稍后<span id="diandian">...</span>
+        </div>
+    </div>
+    <script type="text/template" id="template">
+        <div class="grid">
+            <p>
+                <img src="<% = imgurl %>" alt=""/>
+            </p>
+            <h3>
+                <% = title %>
+            </h3>
+            <p class="g_detail">
+                <% = content %>
+            </p>
+            <p class="g_author">
+                <% = author %>
+            </p>
+        </div>
+    </script>
+    <script type="text/javascript" src="js/Jquery.js"></script>
+    <script type="text/javascript" src="js/underscore-umd-min.js"></script>
+    <script>
+        //瀑布流的管理类
+        function WarterFall() {
+            //大盒子
+            this.$dom = $('#waterfall');
+            //页面
+            this.page = 1;
+            //总列数
+            this.colAmount = 3;
+            //每个列的总高度
+            this.colHeightArr = [0, 0, 0];
+            //编译函数
+            this.compiled = _.template($("#template").html());
+            //自己的小格对象
+            this.grids = [];
+            //节流锁
+            this.lock = true;
+            //调用第1页
+            this.getPage(this.page);
+            //绑定监听
+            this.bindEvent();
+        }
+        //请求某一页的JSON文件
+        WarterFall.prototype.getPage = function (number) {
+            var self = this;
+            //请求Ajax请求
+            $.get("./json/json" + number + ".json", function (data) {
+                //转为JSON对象
+                var dataobj = typeof data == "object" ? data : eval("(" + data + ")");
+                _.each(dataobj.news, function (dictionary) {
+                    new Grid(dictionary);
+                });
+                //开锁
+                if (dataobj.news.length != 0) {
+                    self.lock = true;
+                } else {
+                    //到底了
+                    $(".tip").html("没有更多了");
+                }
+            });
+        }
+        //更改列数，实际上就是重算
+        WarterFall.prototype.changeColAmount = function (number) {
+            this.colAmount = number;
+            //立即把自己的高度数组重新清零
+            this.colHeightArr = new Array(number).fill(0);
+            //让大盒子居中，此时需要重新计算一个宽度
+            this.$dom.css("width", 270 * number - 20);
+            //备份
+            var self = this;
+            //遍历数组中的每一个grid,这些grid一定已经加载完毕了
+            //因为grid类中,load之后才push进入数组
+            _.each(this.grids, function (grid) {
+                //遍历到的每个grid都要重新计算自己的新位置
+                //新的列号
+                grid.colNumber = _.indexOf(self.colHeightArr, _.min(self.colHeightARR));
+                //运动到新的位置
+                grid.$dom.stop(true).animate({
+                    "left": grid.colNumber * 270,
+                    "top": wf.colHeightArr[grid.colNumber]
+                }, 1000);
+                //加入数组中
+                wf.colHeightArr[grid.colNumber] += grid.height + 20;
+            });
+        }
+        WarterFall.prototype.bindEvent = function () {
+            var self = this;
+            //窗口改变尺寸
+            $(window).bind("resize load", function () {
+                //窗口宽度
+                var w = $(window).width();
+                //计算窗口此时能够容纳多少个列
+                var _colAmount = Math.floor((w + 20) / 270);
+                //看看这个列数和当前数列是否不同
+                if (_colAmount != self.colAmount) {
+                    self.changeColAmount(_colAmount);
+                }
+            });
+            //窗口卷动
+            $(window).scroll(function () {
+                //判断节流
+                if (!self.lock) {
+                    return;
+                }
+                var A = $(window).scrollTop();
+                var B = $(window).height();
+                var C = $(document).height();
+                var rate = (A + B) / C;
+                if (rate > 0.7) {
+                    self.getPage(++self.page)
+                    //关锁
+                    self.lock = false;
+                }
+            });
+
+            var i = 0;
+            //等待小点
+            setInterval(function () {
+                i++;
+                if (i > 3) {
+                    i = 0;
+                }
+                $("diandian").html("...".substr(0, i));
+            }, 200);
+        }
+        //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        //小格类
+        function Grid(dictionary) {
+            //自己的DOM
+            this.$dom = null;
+            //高度
+            this.height;
+            //序号
+            this.colNumber;
+            //自己的模板
+            this.dictionary = dictionary;
+            //初始化
+            this.init();
+        }
+        Grid.prototype.init = function () {
+            //new出一个新Image,请求字典中的这个图片
+            var image = new Image();
+            image.src = this.dictionary.imgurl;
+            //备份this
+            var self = this;
+            //监听,谁先回来谁先上树
+            $(image).bind("load", function () {
+                //看看此时哪个列是最小列
+                self.colNumber = _.indexOf(wf.colHeightARR, _.min(wf.colHeightARR));
+                //数据绑定,并且转为jQuery对象
+                self.$dom = $(wf.compiled(self.dictionary));
+                //上树之前改变CSS值
+                self.$dom.css({
+                    "left": self.colNumber * 270,
+                    "top": wf.colHeightArr[self.colNumber]
+                });
+                //上树
+                wf.$("grid").append(self.$dom);
+                //自己的高度
+                self.height = self.$dom.height();
+                //把自己的高度记录记录到数组上
+                wf.colHeightArr[self.colNumber] += self.height + 20;
+                //把自己放入中介者数组中
+                wf.grids.push(self);
+                //设置wf的DOM的新高度,就是数组中最高的列高
+                wf.$dom.css("height", _.max(wf.colHeightArr) + 30);
+            });
+        }
+
+        var wf = new WarterFall();
+
+    </script>
+</body>
+
+</html>
