@@ -36,7 +36,10 @@ body {
     height: 100%;
     background: var(--Main-Base-Bg);
 }
-
+.center{
+    display: flex;
+    justify-content: center;
+}
 #app {
     display: flex;
     width: 100%;
@@ -103,24 +106,40 @@ body {
     display: flex;
     justify-content: center;
 }
-.Main—in {
-    width: 60%;
+.Content-outBox{
+    display: flex;
+    justify-content: center;
 }
-.Main-Text-title{
+.Content-inBox {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.Content-titleBox{
+    margin: 3em 0 1em 0;
+}
+.Content-infoBox{
+    display: flex;
+    justify-content: center;
+}
+.Content-infoBox p{
+    margin: 0 1em;
+}
+.Content-title{
     font-size: 3em;
     font-family: 'Courier New', Courier, '华文仿宋';
     font-weight: bolder;
 }
-.Main-Text {
-    padding: 1em;
-}
-
 .Main-Text-text {
+    display: block;
+    padding: .5em;
     text-indent: 2em;
     font-size: 1.2em;
 }
 .Main-Text-img{
-    width: 80%;
+    display: block;
+    padding: .5em;
+    width: 90%;
 }
 #Footer {
     background-color: gray;
