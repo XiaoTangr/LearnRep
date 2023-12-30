@@ -20,6 +20,4 @@ axios.get('./api/data.json').then(function (res) {
     app.mount('#app')
 }).catch(function (error) {
     console.log(error)
-})
-;
-
+});
