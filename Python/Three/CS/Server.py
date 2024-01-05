@@ -16,7 +16,7 @@ def Sender(msg):
 
 def StartServer():
     Host = '127.0.0.1'
-    Port = 5000
+    Port = 9999
     MsgModule = False
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((Host, Port))

@@ -104,11 +104,21 @@
                     "value": "./assets/images/3/1.jpg"
                 }
             ]
+        },        {
+            "title": "还可以有更多",
+            "date": "2022-01-01",
+            "auther": "佚名",
+            "value": [
+                {
+                    "type": "img",
+                    "value": "./assets/images/1/1.webp"
+                }
+            ]
         }
     ],
     "copyright": [
         "Copyright © 2024. 中国航天 All rights reserved.",
         "202211052@XiaoTang",
-        "更新时间：2023年12月27日"
+        "更新时间: 2023年12月27日"
     ]
 }

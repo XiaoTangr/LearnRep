@@ -155,12 +155,13 @@ class DB_Conn:
             print(e)
             self.Conn.rollback()
             return -1
-
+# 获取中文字符长度
 def count_chinese_characters(text):
     pattern = re.compile(r'[\u4e00-\u9fa5]')
     chinese_characters = re.findall(pattern, text)
     return int(len(chinese_characters))
 
+# 以表格方式打印查询结果
 def PrintSheet(LineOne, LineZero=None, DataBuf=(), CellsWidth=15):
     Rows = ''
     LineThin = '|' + '-' * CellsWidth * len(LineOne) + '|'

@@ -11,7 +11,7 @@ def StartClient():
     
 
     Host = 'localhost'
-    Port = 5000
+    Port = 9999
 
     MsgModule = False
 
